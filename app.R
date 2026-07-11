@@ -97,7 +97,7 @@ ui <- dashboardPage(
       
       
       menuItem(
-        "模型及使用说明",
+        "系统使用与说明",
         tabName = "model",
         icon = icon("book")
       )
