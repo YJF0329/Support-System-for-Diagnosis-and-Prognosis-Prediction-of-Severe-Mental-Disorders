@@ -50,28 +50,31 @@
 
 ## 🏗️ System Architecture
 **SMDAP**
-├── app.R                      # Main application entry
-├── modules/                   # Functional modules
-│   ├── home.R                 # Homepage
-│   ├── bipolar_risk.R         # Bipolar - Disease Risk (Gene Data)
-│   ├── bipolar_clinical.R     # Bipolar - Treatment Response (Clinical)
-│   ├── bipolar_metabolic.R    # Bipolar - Relapse Risk (Metabolites)
-│   ├── scz_adolescent.R       # Schizophrenia - Adolescent Risk
-│   ├── scz_adult_risk.R       # Schizophrenia - Adult Risk
-│   └── scz_treatment.R        # Schizophrenia - Treatment Response
-├── models/                    # Pre-trained models
-│   ├── final_model.Rdata      # KPLS core model
-│   ├── logit_model.rds        # Logistic Regression model
-│   ├── randomForest_model.rds # Random Forest model
-│   ├── svm_model.rds          # SVM model
-│   └── threshold.rds          # Classification thresholds
-├── local_data/          # Gene annotation database
-│   └── local_gene_mapping.rds # Ensembl gene mapping table
-└── data/                      # Sample data
-└── sample_data.csv        # Example gene expression data
+SMDAP/
+├── app.R                          # Main application entry
+├── modules/                       # Functional modules
+│   ├── home.R                     # Homepage
+│   ├── bipolar_risk.R             # Bipolar - Disease Risk (Gene Data)
+│   ├── bipolar_clinical.R         # Bipolar - Treatment Response (Clinical)
+│   ├── bipolar_metabolic.R        # Bipolar - Relapse Risk (Metabolites)
+│   ├── scz_adolescent.R           # Schizophrenia - Adolescent Risk
+│   ├── scz_adult_risk.R           # Schizophrenia - Adult Risk
+│   └── scz_treatment.R            # Schizophrenia - Treatment Response
+├── models/                        # Pre-trained models
+│   ├── final_model.Rdata          # KPLS core model
+│   ├── logit_model.rds            # Logistic Regression model
+│   ├── randomForest_model.rds     # Random Forest model
+│   ├── svm_model.rds              # SVM model
+│   └── threshold.rds              # Classification thresholds
+├── local_data/                    # Gene annotation database
+│   └── local_gene_mapping.rds     # Ensembl gene mapping table
+└── data/                          # Sample data
+└── sample_data.csv            # Example gene expression data
 
 ---
+
 ## 🚀 Quick Start
+
 ### Requirements
 - R 4.0+
 - RStudio (recommended)
@@ -108,10 +111,12 @@ install.packages(c(
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install("biomaRt")
-Run download script
+
+# Run download script
 source("download_gene_mapping.R")
 download_local_gene_mapping()
-# In R console
+
+# Launch the app
 shiny::runApp()
 Or click Run App in RStudio.
 📋 Module Description
