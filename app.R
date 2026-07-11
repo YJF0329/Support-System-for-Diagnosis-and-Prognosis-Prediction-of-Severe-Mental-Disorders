@@ -210,7 +210,7 @@ ui <- dashboardPage(
         color: white;
         margin-bottom: 25px;
       ",
-            h2(icon("book"), " 模型及使用说明", style = "margin: 0; font-weight: 600;")
+            h2(icon("book"), " 系统使用与说明", style = "margin: 0; font-weight: 600;")
           ),
           
           # 内容卡片
