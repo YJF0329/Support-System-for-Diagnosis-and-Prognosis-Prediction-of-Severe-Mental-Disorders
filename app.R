@@ -1,4 +1,3 @@
-`__R_VERSION__` <- "4.5.0"
 # app.R
 library(shiny)
 library(shinydashboard)
