@@ -54,7 +54,8 @@ scz_risk_ui <- function(id){
           icon("child", class = "fa-4x", style = "color: #2E86C1; margin-bottom: 15px;"),
           
           h4("青少年精神分裂症", style = "font-weight: 600; color: #1A5276;"),
-          p("年龄 ≤ 18 岁", style = "color: #666; font-size: 14px; margin-bottom: 20px;"),
+          p("早发性精神分裂症风险预测", style = "color: #666; font-size: 14px; margin-bottom: 5px;"),
+          p("基于外周血免疫标志物mRNA", style = "color: #888; font-size: 13px; margin-bottom: 20px;"),
           
           actionButton(
             ns("go_adolescent"),
@@ -93,7 +94,8 @@ scz_risk_ui <- function(id){
           icon("user", class = "fa-4x", style = "color: #E67E22; margin-bottom: 15px;"),
           
           h4("成人精神分裂症", style = "font-weight: 600; color: #7E5109;"),
-          p("年龄 > 18 岁", style = "color: #666; font-size: 14px; margin-bottom: 20px;"),
+          p("成人精神分裂症风险预测", style = "color: #666; font-size: 14px; margin-bottom: 5px;"),
+          p("基于外周血lncRNA表达谱", style = "color: #888; font-size: 13px; margin-bottom: 20px;"),
           
           actionButton(
             ns("go_adult"),
@@ -168,32 +170,29 @@ scz_risk_server <- function(id){
       }
       
       if(risk_type == "adolescent") {
+        # 注意：这里使用 scz_adolescent_ui，函数名与原始文件一致
         scz_adolescent_ui(ns("adolescent_model"))
       } else {
-        scz_adult_risk_ui(ns("adult_model"))
+        # 注意：这里使用 scz_adult_ui，函数名与原始文件一致
+        scz_adult_ui(ns("adult_model"))
       }
       
     })
     
     
     # 初始化青少年模型
-    observe({
-      if(!is.null(input$go_adolescent)) {
-        scz_adolescent_server("adolescent_model")
-      }
+    observeEvent(input$go_adolescent, {
+      # 使用 scz_adolescent_server，函数名与原始文件一致
+      scz_adolescent_server("adolescent_model")
     })
     
     
     # 初始化成人模型
-    observe({
-      if(!is.null(input$go_adult)) {
-        scz_adult_risk_server("adult_model")
-      }
+    observeEvent(input$go_adult, {
+      # 使用 scz_adult_server，函数名与原始文件一致
+      scz_adult_server("adult_model")
     })
     
-    
-    # 侧边栏自动跳转（父级控制）
-    # 保留给父级 server 调用
     
   })
   
